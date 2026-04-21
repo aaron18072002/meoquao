@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://r0cg2ojid8m"]
+
+[ext_resource type="Script" uid="uid://cn5ibl66wdnfb" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bf2qk1aheyxlo" path="res://assets/cat_idle.png" id="2_h2yge"]
+
+[node name="Main" type="Node2D" unique_id=324887004]
+script = ExtResource("1_0xm2m")
+
+[node name="CatButton" type="TextureButton" parent="." unique_id=1988568346]
+offset_right = 400.0
+offset_bottom = 500.0
+texture_normal = ExtResource("2_h2yge")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HairParticles" type="CPUParticles2D" parent="CatButton" unique_id=515419130]
+position = Vector2(140, 140)
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+direction = Vector2(1, 1)
+gravity = Vector2(0, 500)
+initial_velocity_max = 200.0
+
+[node name="StateTimer" type="Timer" parent="." unique_id=1227876271]
+one_shot = true
+
+[connection signal="pressed" from="CatButton" to="." method="_on_cat_button_pressed"]
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
